@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Firebase IoT Environment Monitoring Platform · Assignment 04 · Rohit Rishe</title>
+<meta name="description" content="ESP32 environmental monitoring with DHT11, LDR, Firebase Realtime Database, authentication, and a web dashboard." />
+<meta name="author" content="Rohit Rishe" />
+<meta name="theme-color" content="#0B1120" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Firebase IoT Environment Monitoring Platform · Assignment 04 · Rohit Rishe" />
+<meta property="og:description" content="ESP32 environmental monitoring with DHT11, LDR, Firebase Realtime Database, authentication, and a web dashboard." />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" />
+<link rel="stylesheet" href="css/styles.css" />
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body class="page-detail">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="head">
+  <div class="wrap head__in">
+    <a class="logo" href="index.html" aria-label="Rohit Rishe, home"><span class="logo__chip" aria-hidden="true">RR</span><span class="logo__name">ROHIT RISHE</span></a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span><i></i><i></i><i></i></span></button>
+    <nav id="menu" class="menu" aria-label="Primary">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#assignments" class="is-on" aria-current="page">Assignments</a>
+      <a href="index.html#overview">Overview</a>
+      <a href="index.html#stack">Tech stack</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <section class="dhero" aria-labelledby="title">
+    <div class="wrap">
+      <ol class="crumbs" aria-label="Breadcrumb">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#assignments">Assignments</a></li>
+        <li><span aria-current="page">Assignment 04</span></li>
+      </ol>
+      <div class="dhero__grid">
+        <div class="enter">
+          <p class="dhero__tag"><b>A/04</b><span>IoT works / Task 04</span></p>
+          <h1 id="title">Firebase IoT Environment <span>Monitoring Platform</span></h1>
+          <p class="dhero__lead">Collect temperature, humidity, and ambient-light readings on an ESP32, store them in Firebase, and visualize live and historical data in an authenticated web dashboard.</p>
+          <ul class="chips" aria-label="Technologies"><li class="chip chip--hi">DHT11</li><li class="chip">LDR</li><li class="chip">ESP32</li><li class="chip">Wi-Fi</li><li class="chip">Firebase</li></ul>
+          <ul class="dhero__facts"><li><b>10</b> sections</li><li><b>2</b> photos</li><li><b>3</b> code / structure blocks</li></ul>
+          <div class="dhero__cta">
+            <a class="btn btn--solid" href="#evidence"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg> View project images</a>
+            <a class="btn btn--line" href="index.html#assignments"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All assignments</a>
+          </div>
+        </div>
+        <aside class="sigpath bracket enter-2" aria-labelledby="sigpath-title">
+          <h2 id="sigpath-title">Signal path <span>from §01</span></h2>
+          <ol>
+            <li><div><small>DHT11 + LDR</small><strong>Environmental readings</strong><p>Temperature, humidity, light</p></div></li>
+            <li><div><small>ESP32</small><strong>Wi-Fi + logic</strong><p>Reads and uploads sensor data</p></div></li>
+            <li><div><small>Firebase</small><strong>Realtime Database</strong><p>Current values and history</p></div></li>
+            <li><div><small>Dashboard</small><strong>Auth + visualizations</strong><p>Live and historical views</p></div></li>
+          </ol>
+          <a class="btn btn--line btn--sm" href="#overview">Read §01 in full <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <nav class="tabs" aria-label="Sections on this page">
+    <div class="wrap tabs__in">
+      <span class="tabs__label">Sections</span>
+      <div class="tabs__track">
+        <ol>
+          <li><a href="#overview"><span>01</span>Overview</a></li>
+          <li><a href="#requirements"><span>02</span>Requirements</a></li>
+          <li><a href="#firebase"><span>03</span>Firebase setup</a></li>
+          <li><a href="#firmware"><span>04</span>ESP32 integration</a></li>
+          <li><a href="#dashboard"><span>05</span>Web dashboard</a></li>
+          <li><a href="#history"><span>06</span>History &amp; visualization</a></li>
+          <li><a href="#testing"><span>07</span>Testing</a></li>
+          <li><a href="#evidence"><span>08</span>Evidence</a></li>
+          <li><a href="#deployment"><span>09</span>Deployment</a></li>
+          <li><a href="#reflection"><span>10</span>Final outcome</a></li>
+        </ol>
+      </div>
+    </div>
+  </nav>
+
+  <article class="article" aria-labelledby="title">
+      <section class="sec" id="overview">
+      <div class="sec-head"><span>01 / PROJECT OVERVIEW</span><h2>Firebase-connected sensor monitoring</h2></div>
+      <div class="tiles">
+        <div class="tile"><span>OBJECTIVE</span><h3>Monitor environmental readings</h3><p>Create a Firebase-based IoT backend and integrate an ESP32 to transmit temperature, humidity, and ambient-light readings in real time.</p></div>
+        <div class="tile"><span>SYSTEM PURPOSE</span><h3>Sensor to authenticated dashboard</h3><p>The ESP32 reads a DHT11 and LDR, sends sensor data to Firebase Realtime Database over Wi-Fi, and an authenticated web dashboard presents current and historical readings.</p></div>
+      </div>
+      <p class="callout"><strong>Project summary:</strong> The ESP32 collects environmental readings from the DHT11 and LDR and uploads them through Wi-Fi to Firebase. Firebase Authentication protects dashboard access, while real-time and historical sensor data are visualized through a web interface.</p>
+      <div class="flow" aria-label="DHT11 and LDR to ESP32 to Wi-Fi to Firebase to dashboard">
+        <div class="flow-step"><span>DHT11 + LDR</span><strong>Environmental readings</strong><p>Temperature, humidity, light</p></div>
+        <div class="flow-step"><span>ESP32</span><strong>Wi-Fi + logic</strong><p>Reads and uploads sensor data</p></div>
+        <div class="flow-step"><span>Firebase</span><strong>Realtime Database</strong><p>Current values and history</p></div>
+        <div class="flow-step"><span>Dashboard</span><strong>Auth + visualizations</strong><p>Live and historical views</p></div>
+      </div>
+    </section>
+
+      <section class="sec" id="requirements">
+      <div class="sec-head"><span>02 / SYSTEM REQUIREMENTS</span><h2>What the system provides</h2></div>
+      <div class="tiles">
+        <div class="tile"><span>01 / SENSING</span><h3>Environment values</h3><p>Temperature, relative humidity, analog ambient-light level, and timestamp.</p></div>
+        <div class="tile"><span>02 / CONNECTIVITY</span><h3>ESP32 + Wi-Fi</h3><p>Read sensor values, connect to the internet, and send updates to Firebase.</p></div>
+        <div class="tile"><span>03 / CLOUD</span><h3>Firebase services</h3><p>Email/password authentication and Realtime Database for current and historical readings.</p></div>
+        <div class="tile"><span>04 / DASHBOARD</span><h3>Visualize data</h3><p>Authenticated login, live values, historical graph, and data table.</p></div>
+      </div>
+      <div class="tiles">
+        <div class="tile"><span>01</span><h3>Current sensor data</h3><p>Store the latest temperature, humidity, and LDR value under <code>/current</code> for real-time monitoring.</p></div>
+        <div class="tile"><span>02</span><h3>Historical data</h3><p>Append periodic sensor records with timestamps under <code>/history</code> for graphing and tabular review.</p></div>
+        <div class="tile"><span>03</span><h3>Secure dashboard access</h3><p>Require Firebase Email/Password authentication before allowing users to view the monitoring dashboard.</p></div>
+      </div>
+    </section>
+
+      <section class="sec" id="firebase">
+      <div class="sec-head"><span>03 / FIREBASE CLOUD</span><h2>Project, authentication &amp; database</h2></div>
+      <h3 class="sub">Firebase project setup</h3>
+      <p class="lead">Create a Firebase project, register the web application, and obtain its configuration parameters. Configure the project so the ESP32 can send sensor data and the authenticated web dashboard can read it. Enable Email/Password under Authentication sign-in methods and create a user account for dashboard access.</p>
+      <div class="flow" aria-label="Firebase project setup">
+        <div class="flow-step"><span>01</span><strong>Create project</strong></div>
+        <div class="flow-step"><span>02</span><strong>Register web app</strong></div>
+        <div class="flow-step"><span>03</span><strong>Email / Password auth</strong></div>
+        <div class="flow-step"><span>04</span><strong>Realtime Database</strong></div>
+      </div>
+      <h3 class="sub">Suggested Realtime Database structure</h3>
+      <pre class="code"><code>/
+|-- current
+|   |-- temperature: 28.4
+|   |-- humidity: 52
+|   |-- ldr: 2038
+|   `-- timestamp: 1758956400
+`-- history
+    |-- record_001
+    |   |-- temperature: 28.4
+    |   |-- humidity: 52
+    |   |-- ldr: 2038
+    |   `-- timestamp: 1758956400
+    `-- ...</code></pre>
+      <p class="callout"><strong>Protect Firebase credentials and access.</strong> Use Firebase Authentication to gate dashboard access. Configure Realtime Database rules so only authenticated, authorized users can access data. Do not expose private credentials or leave production database rules open.</p>
+      <h3 class="sub">Authentication flow</h3>
+      <p class="prose">User opens launch page &rarr; login page &rarr; Firebase Authentication &rarr; dashboard on success.</p>
+      <p class="note">When sign-in fails, show a clear error and keep protected dashboard content inaccessible. Provide a logout action that ends the authenticated session.</p>
+    </section>
+
+      <section class="sec" id="firmware">
+      <div class="sec-head"><span>04 / FIREBASE INTEGRATION</span><h2>Sensor data integration</h2></div>
+      <p class="lead">The ESP32 joins Wi-Fi, initializes the DHT11 and LDR input, then authenticates with Firebase using the configured API key and Realtime Database URL. It periodically reads sensor values, uploads current readings and a timestamp, and writes historical records.</p>
+      <div class="tiles">
+        <div class="tile"><span>01</span><h3>Connect to Wi-Fi</h3><p>Start the station connection and wait for internet access before using Firebase.</p></div>
+        <div class="tile"><span>02</span><h3>Initialize Firebase</h3><p>Install the Firebase ESP32 library and configure the API key, Realtime Database URL, and authentication details, then initialize the Firebase client.</p></div>
+        <div class="tile"><span>03</span><h3>Read and publish sensors</h3><p>Read DHT11 temperature/humidity and the LDR ADC value; update the current database state.</p></div>
+        <div class="tile"><span>04</span><h3>Upload current sensor values</h3><p>Write temperature, humidity, LDR reading, and timestamp to the <code>/current</code> node.</p></div>
+        <div class="tile"><span>05</span><h3>Append history</h3><p>Periodically store sensor readings and a timestamp under <code>/history</code> for later review.</p></div>
+      </div>
+      <h3 class="sub">Libraries used</h3>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col">Library / tool</th><th scope="col">Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>ESP32 board package</td><td>Board definitions and Wi-Fi support</td></tr>
+            <tr><td>DHT sensor library</td><td>Read temperature and humidity from DHT11</td></tr>
+            <tr><td>Adafruit Unified Sensor</td><td>Sensor abstraction dependency</td></tr>
+            <tr><td>Firebase ESP Client</td><td>ESP32 authentication and Realtime Database communication</td></tr>
+            <tr><td>Arduino IDE</td><td>Firmware editing and upload</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">This project description specifies firmware behavior and configuration, not a verified source listing. Add the actual project sketch or repository when available.</p>
+    </section>
+
+      <section class="sec" id="dashboard">
+      <div class="sec-head"><span>05 / WEB APPLICATION</span><h2>Dashboard experience</h2></div>
+      <p class="lead">The web frontend uses HTML, CSS, JavaScript, Firebase Web SDK, and Chart.js. The user flow starts at a launch page, continues through an authenticated login page, and then opens the protected dashboard.</p>
+      <div class="tiles">
+        <div class="tile"><span>01 / LIVE</span><h3>Sensor cards</h3><p>Temperature in °C, humidity in %, and the raw LDR ADC value.</p></div>
+        <div class="tile"><span>02 / VISUAL</span><h3>Temperature meter</h3><p>An analog-style meter presents the latest temperature at a glance.</p></div>
+        <div class="tile"><span>03 / SENSOR</span><h3>Light level</h3><p>Display the current LDR analog reading as a live ambient-light indicator.</p></div>
+        <div class="tile"><span>04 / HISTORY</span><h3>Graphs &amp; records</h3><p>Historical temperature, humidity, and LDR charts plus a data table.</p></div>
+      </div>
+      <h3 class="sub">Realtime updates</h3>
+      <div class="flow" aria-label="Firebase realtime update flow">
+        <div class="flow-step"><span>Firebase</span><strong><code>/current</code></strong></div>
+        <div class="flow-step"><span>Web SDK</span><strong><code>onValue()</code></strong></div>
+        <div class="flow-step"><span>Dashboard</span><strong>Update elements</strong></div>
+        <div class="flow-step"><span>User</span><strong>Current readings</strong></div>
+      </div>
+      <p class="prose">A realtime listener such as <code>onValue()</code> observes values under <code>/current</code>. When the ESP32 publishes a new sensor reading, JavaScript updates the temperature, humidity, and LDR displays without a manual refresh.</p>
+    </section>
+
+      <section class="sec" id="history">
+      <div class="sec-head"><span>06 / DATA OVER TIME</span><h2>Historical logging &amp; visualization</h2></div>
+      <p class="lead">The ESP32 periodically appends a history record containing temperature, humidity, LDR reading, and timestamp. The dashboard reads these records to build a historical table and graphs.</p>
+      <pre class="code"><code>/history/{push-id}
+{
+  "timestamp": 1758956400,
+  "temperature": 28.2,
+  "humidity": 59,
+  "ldr": 2038
+}</code></pre>
+      <div class="tiles">
+        <div class="tile"><span>01</span><h3>History table</h3><p>Read records from <code>/history</code> and display timestamp, temperature, humidity, and LDR values in rows.</p></div>
+        <div class="tile"><span>02</span><h3>Chart.js graphs</h3><p>Plot temperature versus time, humidity versus time, and LDR versus time from historical Firebase records.</p></div>
+        <div class="tile"><span>03</span><h3>Data table</h3><p>Present historical sensor readings in a tabular format for comparison over time.</p></div>
+      </div>
+    </section>
+
+      <section class="sec" id="testing">
+      <div class="sec-head"><span>07 / VALIDATION PLAN</span><h2>Test each module</h2></div>
+      <p class="lead">Validate each stage independently before testing the full sensor-to-dashboard workflow. Replace the status column with observed outcomes after running the tests.</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col">Test</th><th scope="col">Check</th><th scope="col">Expected behavior</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+            <tr><td>DHT11</td><td>Temperature and humidity readings</td><td>Values update consistently without invalid sensor readings</td><td>Record result</td></tr>
+            <tr><td>LDR</td><td>Analog ADC value</td><td>Reading changes with ambient light; approximate observed normal value: 2038</td><td>Record result</td></tr>
+            <tr><td>Firebase</td><td><code>/current</code> values</td><td>Temperature, humidity, LDR, and timestamp update in Realtime Database</td><td>Record result</td></tr>
+            <tr><td>Authentication</td><td>Email/Password login</td><td>Valid user reaches dashboard; invalid login shows an error</td><td>Record result</td></tr>
+            <tr><td>Realtime dashboard</td><td>Temperature, humidity, and LDR</td><td>Dashboard values update from Firebase without manual refresh</td><td>Record result</td></tr>
+            <tr><td>History</td><td>Wait for logging interval</td><td>Timestamped sensor records appear under <code>/history</code></td><td>Record result</td></tr>
+            <tr><td>Visualization</td><td>Historical graph and data table</td><td>History values appear correctly in the graph and table</td><td>Record result</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">LDR readings depend on the sensor module, ADC configuration, and ambient lighting. Compare readings with the environment during testing.</p>
+    </section>
+
+      <section class="sec" id="evidence">
+      <div class="sec-head"><span>08 / PROJECT EVIDENCE</span><h2>Assignment 4 project images</h2></div>
+      <p class="lead">Images supplied with Assignment 4 document the Firebase IoT environment monitoring project.</p>
+      <div class="gallery">
+        <figure>
+          <button type="button" class="zoom" data-zoom data-caption="Assignment 4 project image." aria-label="Open full size: Assignment 4 project image"><img src="assets/images/a04-firebase-dashboard.jpeg" alt="Assignment 4 project image" loading="lazy" decoding="async" /></button>
+          <figcaption>Assignment 4 project image.</figcaption>
+        </figure>
+        <figure>
+          <button type="button" class="zoom" data-zoom data-caption="Additional Assignment 4 project image." aria-label="Open full size: Additional Assignment 4 project image"><img src="assets/images/a04-firebase-dashboard-2.jpeg" alt="Additional Assignment 4 project image" loading="lazy" decoding="async" /></button>
+          <figcaption>Additional Assignment 4 project image.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+      <section class="sec" id="deployment">
+      <div class="sec-head"><span>09 / WEB DEPLOYMENT</span><h2>Firebase Hosting structure</h2></div>
+      <p class="lead">The dashboard frontend can be deployed using Firebase Hosting. Keep client application files in the Hosting public directory and configure Firebase Authentication and database access separately.</p>
+      <pre class="code"><code>firebase-iot-dashboard/
+|-- firebase.json
+`-- public/
+    |-- index.html
+    |-- style.css
+    `-- app.js</code></pre>
+      <div class="flow" aria-label="Sensor and device data flow to hosted Firebase dashboard">
+        <div class="flow-step"><span>SENSORS</span><strong>DHT11 + LDR</strong></div>
+        <div class="flow-step"><span>DEVICE</span><strong>ESP32 + Wi-Fi</strong></div>
+        <div class="flow-step"><span>CLOUD</span><strong>Firebase Auth + Database</strong></div>
+        <div class="flow-step"><span>WEB</span><strong>Hosted dashboard</strong></div>
+      </div>
+      <p class="prose">Firebase Authentication protects dashboard access; Realtime Database stores current sensor telemetry and history; Firebase Hosting serves the web application.</p>
+    </section>
+
+      <section class="sec" id="reflection">
+      <div class="sec-head"><span>10 / PROJECT SUMMARY</span><h2>Final system</h2></div>
+      <div class="tiles">
+        <div class="tile"><span>DATA SOURCE</span><h3>Environmental readings</h3><p>Temperature and humidity from DHT11, plus ambient-light readings from the LDR.</p></div>
+        <div class="tile"><span>SOFTWARE</span><h3>Embedded + web</h3><p>Arduino IDE/C++, HTML, CSS, JavaScript, and Chart.js.</p></div>
+        <div class="tile"><span>CLOUD</span><h3>Firebase</h3><p>Authentication, Realtime Database, and Hosting.</p></div>
+        <div class="tile"><span>FEATURES</span><h3>Monitor + visualize</h3><p>Authenticated access, live readings, historical records, graphs, and data table.</p></div>
+      </div>
+      <p class="callout"><strong>Final outcome:</strong> A Firebase-integrated IoT monitoring platform where the ESP32 collects environmental parameters from DHT11 and LDR sensors and transmits them to Firebase Realtime Database through Wi-Fi. Firebase Authentication provides secure dashboard access, while real-time and historical sensor data are visualized through a web interface.<br /><strong>DHT11 + LDR &rarr; ESP32 &rarr; Wi-Fi &rarr; Firebase Realtime Database &rarr; Authenticated Dashboard</strong></p>
+      <h3 class="sub">Project repository</h3>
+      <p class="prose">Add the repository link when the source code and deployment files are published.</p>
+    </section>
+  </article>
+
+  <nav class="pager" aria-label="Assignment navigation">
+    <a class="pager__prev" href="assignment-03.html" rel="prev"><small>&larr; Assignment 03</small><strong>IFTTT + Adafruit IO IoT Automation</strong></a>
+    <a class="pager__next" href="assignment-05.html" rel="next"><small>Assignment 05 &rarr;</small><strong>Firebase-Based Home Automation</strong></a>
+    <a class="btn btn--line pager__all" href="index.html#assignments">View all assignments</a>
+  </nav>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__about">
+        <a class="logo" href="index.html"><span class="logo__chip" aria-hidden="true">RR</span><span class="logo__name">ROHIT RISHE</span></a>
+        <p>IoT · Embedded Systems · ESP32 · Cloud Integration. Five hands-on ESP32 assignments, from a local Wi-Fi web server to Firebase home automation.</p>
+      </div>
+      <nav aria-label="Assignments">
+        <h2>Assignments</h2>
+        <ul>
+          <li><a href="assignment-01.html"><span>01</span>ESP32 Web Server</a></li>
+          <li><a href="assignment-02.html"><span>02</span>Adafruit IO + MQTT</a></li>
+          <li><a href="assignment-03.html"><span>03</span>IFTTT Automation</a></li>
+          <li><a href="assignment-04.html"><span>04</span>Firebase Monitoring</a></li>
+          <li><a href="assignment-05.html"><span>05</span>Home Automation</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Site">
+        <h2>Site</h2>
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#assignments">Assignments</a></li>
+          <li><a href="index.html#overview">Overview</a></li>
+          <li><a href="index.html#stack">Tech stack</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot__base"><span>&copy; <span data-year>2026</span> Rohit Rishe. All rights reserved.</span><span>Built with HTML, CSS &amp; JavaScript.</span></div>
+  </div>
+</footer>
+<button class="totop" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg><svg class="totop__ring" viewBox="0 0 50 50" aria-hidden="true"><circle cx="25" cy="25" r="23"/></svg></button>
+<script src="js/main.js" defer></script>
+</body>
+</html>

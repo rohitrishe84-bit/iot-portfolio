@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rohit Rishe · IoT, Embedded Systems & Cloud Integration</title>
+<meta name="description" content="Rohit Rishe&#x27;s IoT portfolio: five ESP32 assignments covering a local web server, MQTT with Adafruit IO, IFTTT automation, Firebase environment monitoring and Firebase home automation." />
+<meta name="author" content="Rohit Rishe" />
+<meta name="theme-color" content="#0B1120" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Rohit Rishe · IoT, Embedded Systems & Cloud Integration" />
+<meta property="og:description" content="Rohit Rishe&#x27;s IoT portfolio: five ESP32 assignments covering a local web server, MQTT with Adafruit IO, IFTTT automation, Firebase environment monitoring and Firebase home automation." />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" />
+<link rel="stylesheet" href="css/styles.css" />
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body class="page-home">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="head">
+  <div class="wrap head__in">
+    <a class="logo" href="#home" aria-label="Rohit Rishe, home"><span class="logo__chip" aria-hidden="true">RR</span><span class="logo__name">ROHIT RISHE</span></a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span><i></i><i></i><i></i></span></button>
+    <nav id="menu" class="menu" aria-label="Primary">
+      <a href="#home" data-spy>Home</a>
+      <a href="#assignments" data-spy>Assignments</a>
+      <a href="#overview" data-spy>Overview</a>
+      <a href="#stack" data-spy>Tech stack</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <section class="hero" id="home" aria-labelledby="hero-title">
+    <svg class="hero__traces" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path class="trace" d="M-10 120 H260 L300 160 H560" /><path class="trace-run" d="M-10 120 H260 L300 160 H560" />
+      <path class="trace" d="M-10 520 H180 L240 460 H420 L460 500 H720" /><path class="trace-run v t2" d="M-10 520 H180 L240 460 H420 L460 500 H720" />
+      <path class="trace" d="M1210 80 H980 L930 130 H760 L720 90 H640" /><path class="trace-run t3" d="M1210 80 H980 L930 130 H760 L720 90 H640" />
+      <path class="trace" d="M1210 620 H1020 L960 560 H820" /><path class="trace-run v t4" d="M1210 620 H1020 L960 560 H820" />
+      <path class="trace" d="M600 -10 V40 L640 80" /><path class="trace" d="M880 710 V660 L840 620 H760" />
+      <circle class="trace-dot" cx="560" cy="160" r="4" /><circle class="trace-dot" cx="720" cy="500" r="4" />
+      <circle class="trace-dot" cx="640" cy="90" r="4" /><circle class="trace-dot" cx="820" cy="560" r="4" />
+      <circle class="trace-dot" cx="640" cy="80" r="3" /><circle class="trace-dot" cx="760" cy="620" r="3" />
+    </svg>
+    <div class="wrap">
+      <div class="hero__grid">
+        <div class="enter">
+          <p class="kicker">IoT portfolio · 5 assignments</p>
+          <h1 class="hero__name" id="hero-title">ROHIT <span>RISHE</span></h1>
+          <ul class="hero__spec" aria-label="Focus areas"><li>IoT</li><li>Embedded Systems</li><li>ESP32</li><li>Cloud Integration</li></ul>
+          <p class="hero__intro">Five hands-on ESP32 builds that move step by step from the local network to the cloud: a Wi-Fi web server that switches an LED, MQTT control through Adafruit IO, voice-triggered IFTTT automation, Firebase environment monitoring with an authenticated dashboard, and relay-based home automation driven by an LDR.</p>
+          <div class="hero__cta">
+            <a class="btn btn--solid" href="#assignments">Explore assignments <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn--line" href="#overview">Compare the builds</a>
+          </div>
+        </div>
+        <figure class="serial enter-2" aria-labelledby="serial-cap">
+          <div class="serial__bar"><span class="serial__led" aria-hidden="true"></span><span>Serial Monitor</span><span class="serial__baud">115200 baud</span><button class="serial__replay" type="button">Replay</button></div>
+          <pre class="serial__out" data-serial><span class="ln"><span class="src">[A01]</span> <span class="">Connecting to Wi-Fi.....</span></span><span class="ln"><span class="src">[A01]</span> <span class="ok">Wi-Fi connected</span></span><span class="ln"><span class="src">[A01]</span> <span class="">ESP32 IP Address: &lt;WiFi.localIP()&gt;</span></span><span class="ln"><span class="src">[A02]</span> <span class="">Connecting to Adafruit IO...</span></span><span class="ln"><span class="src">[A02]</span> <span class="ok">Connected to Adafruit IO</span></span><span class="ln"><span class="src">[A02]</span> <span class="rx">Received: ON</span></span><span class="ln"><span class="src">[A02]</span> <span class="led">LED ON</span></span><span class="ln"><span class="src">[A03]</span> <span class="rx">Received: OFF</span></span><span class="ln"><span class="src">[A03]</span> <span class="led">LED OFF</span></span></pre>
+          <figcaption class="serial__foot" id="serial-cap">// Serial.println() messages from the Assignment 01–03 sketches</figcaption>
+        </figure>
+      </div>
+      <div class="metrics" role="list">
+        <div class="metric" role="listitem"><b>05</b><span>Assignments</span></div>
+        <div class="metric" role="listitem"><b>04</b><span>Demo videos</span></div>
+        <div class="metric" role="listitem"><b>05</b><span>Project photos &amp; screenshots</span></div>
+        <div class="metric" role="listitem"><b>03</b><span>Cloud platforms</span></div>
+      </div>
+    </div>
+    <script type="application/json" id="serial-lines">[{"src": "A01", "text": "Connecting to Wi-Fi.....", "type": true, "pause": 300}, {"src": "A01", "text": "Wi-Fi connected", "kind": "ok"}, {"src": "A01", "text": "ESP32 IP Address: <WiFi.localIP()>", "pause": 650}, {"src": "A02", "text": "Connecting to Adafruit IO...", "type": true, "pause": 300}, {"src": "A02", "text": "Connected to Adafruit IO", "kind": "ok"}, {"src": "A02", "text": "Received: ON", "kind": "rx"}, {"src": "A02", "text": "LED ON", "kind": "led", "pause": 900}, {"src": "A03", "text": "Received: OFF", "kind": "rx"}, {"src": "A03", "text": "LED OFF", "kind": "led"}]</script>
+  </section>
+
+  <section class="section" id="assignments" aria-labelledby="assignments-title">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <div><p class="kicker">Practical work · 01 to 05</p><h2 id="assignments-title">IoT assignments</h2></div>
+        <p>A collection of five hands-on assignments exploring connected devices, embedded programming, and practical Internet of Things systems. Each one has its full write-up, firmware, wiring and demo media.</p>
+      </div>
+      <div class="cases">
+        <article class="case reveal" style="--fp: 50% 20%">
+          <div class="case__media">
+            <img src="assets/images/a01-esp32-led-controller.jpeg" alt="Assignment 01 project image" loading="lazy" decoding="async" />
+            <span class="case__flag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg> Video demo</span>
+            <span class="case__index" aria-hidden="true">01</span>
+          </div>
+          <div class="case__body">
+            <p class="case__meta"><span>Local control</span><span>6 sections</span></p>
+            <h3><a href="assignment-01.html">ESP32 Web Server &amp; HTML LED Control</a></h3>
+            <p class="case__desc">Control a physical LED through a browser on the local Wi-Fi network.</p>
+            <p class="case__path"><span class="sr-only">Signal path: </span><b>ON / OFF click</b> <i aria-hidden="true">&rarr;</i> <b>Local network</b> <i aria-hidden="true">&rarr;</i> <b>Web server</b> <i aria-hidden="true">&rarr;</i> <b>LED ON / OFF</b></p>
+            <ul class="chips" aria-label="Technologies"><li class="chip">ESP32</li><li class="chip">Wi-Fi</li><li class="chip">HTTP</li><li class="chip">GPIO</li></ul>
+            <div class="case__actions">
+              <a class="btn btn--solid btn--sm" href="assignment-01.html">View project<span class="sr-only">: assignment 01</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="btn btn--line btn--sm" href="assignment-01.html#evidence"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg> Watch demo</a>
+            </div>
+          </div>
+        </article>
+        <article class="case reveal" style="--fp: 50% 18%">
+          <div class="case__media">
+            <img src="assets/images/a02-rohit-cover.jpg" alt="Assignment 02 project image" loading="lazy" decoding="async" />
+            <span class="case__flag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg> Video demo</span>
+            <span class="case__index" aria-hidden="true">02</span>
+          </div>
+          <div class="case__body">
+            <p class="case__meta"><span>Cloud control</span><span>10 sections</span></p>
+            <h3><a href="assignment-02.html">Adafruit IO Dashboard &amp; MQTT LED Control</a></h3>
+            <p class="case__desc">Control an ESP32 LED remotely through an Adafruit IO feed and MQTT.</p>
+            <p class="case__path"><span class="sr-only">Signal path: </span><b>Publisher</b> <i aria-hidden="true">&rarr;</i> <b>MQTT broker</b> <i aria-hidden="true">&rarr;</i> <b>Subscriber</b> <i aria-hidden="true">&rarr;</i> <b>LED ON / OFF</b></p>
+            <ul class="chips" aria-label="Technologies"><li class="chip">ESP32</li><li class="chip">Adafruit IO</li><li class="chip">MQTT</li><li class="chip">Cloud</li></ul>
+            <div class="case__actions">
+              <a class="btn btn--solid btn--sm" href="assignment-02.html">View project<span class="sr-only">: assignment 02</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="btn btn--line btn--sm" href="assignment-02.html#video"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg> Watch demo</a>
+            </div>
+          </div>
+        </article>
+        <article class="case reveal" style="--fp: 40% 50%">
+          <div class="case__media">
+            <img src="assets/images/a03-rohit-cover.jpg" alt="Assignment 03 project image" loading="lazy" decoding="async" />
+            <span class="case__flag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg> Video demo</span>
+            <span class="case__index" aria-hidden="true">03</span>
+          </div>
+          <div class="case__body">
+            <p class="case__meta"><span>Event automation</span><span>11 sections</span></p>
+            <h3><a href="assignment-03.html">IFTTT + Adafruit IO IoT Automation</a></h3>
+            <p class="case__desc">Link an external event to an ESP32 LED through an IFTTT Applet, cloud feed, and MQTT.</p>
+            <p class="case__path"><span class="sr-only">Signal path: </span><b>External event</b> <i aria-hidden="true">&rarr;</i> <b>Applet action</b> <i aria-hidden="true">&rarr;</i> <b>Feed + broker</b> <i aria-hidden="true">&rarr;</i> <b>GPIO 2 / LED</b></p>
+            <ul class="chips" aria-label="Technologies"><li class="chip">IFTTT</li><li class="chip">Adafruit IO</li><li class="chip">MQTT</li><li class="chip">ESP32</li></ul>
+            <div class="case__actions">
+              <a class="btn btn--solid btn--sm" href="assignment-03.html">View project<span class="sr-only">: assignment 03</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="btn btn--line btn--sm" href="assignment-03.html#evidence"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg> Watch demo</a>
+            </div>
+          </div>
+        </article>
+        <article class="case reveal" style="--fp: 10% 35%">
+          <div class="case__media">
+            <img src="assets/images/a04-firebase-dashboard.jpeg" alt="Assignment 04 project image" loading="lazy" decoding="async" />
+            <span class="case__flag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg> 2 screenshots</span>
+            <span class="case__index" aria-hidden="true">04</span>
+          </div>
+          <div class="case__body">
+            <p class="case__meta"><span>Sensor telemetry</span><span>10 sections</span></p>
+            <h3><a href="assignment-04.html">Firebase IoT Environment Monitoring Platform</a></h3>
+            <p class="case__desc">Monitor DHT11 temperature and humidity plus LDR light readings through an authenticated Firebase dashboard.</p>
+            <p class="case__path"><span class="sr-only">Signal path: </span><b>Environmental readings</b> <i aria-hidden="true">&rarr;</i> <b>Wi-Fi + logic</b> <i aria-hidden="true">&rarr;</i> <b>Realtime Database</b> <i aria-hidden="true">&rarr;</i> <b>Auth + visualizations</b></p>
+            <ul class="chips" aria-label="Technologies"><li class="chip">DHT11</li><li class="chip">LDR</li><li class="chip">ESP32</li><li class="chip">Wi-Fi</li><li class="chip">Firebase</li></ul>
+            <div class="case__actions">
+              <a class="btn btn--solid btn--sm" href="assignment-04.html">View project<span class="sr-only">: assignment 04</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="btn btn--line btn--sm" href="assignment-04.html#evidence"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg> View images</a>
+            </div>
+          </div>
+        </article>
+        <article class="case reveal" style="--fp: 10% 40%">
+          <div class="case__media">
+            <img src="assets/images/a04-firebase-dashboard-2.jpeg" alt="Assignment 05 project image" loading="lazy" decoding="async" />
+            <span class="case__flag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg> Video demo</span>
+            <span class="case__index" aria-hidden="true">05</span>
+          </div>
+          <div class="case__body">
+            <p class="case__meta"><span>Closed-loop control</span><span>12 sections</span></p>
+            <h3><a href="assignment-05.html">Firebase-Based Home Automation</a></h3>
+            <p class="case__desc">Extend Firebase sensor monitoring with relay control, MANUAL/AUTO modes, and LDR-based switching.</p>
+            <p class="case__path"><span class="sr-only">Signal path: </span><b>Dashboard</b> <i aria-hidden="true">&rarr;</i> <b>Firebase</b> <i aria-hidden="true">&rarr;</i> <b>ESP32</b> <i aria-hidden="true">&rarr;</i> <b>Relay → bulb</b></p>
+            <ul class="chips" aria-label="Technologies"><li class="chip">Firebase</li><li class="chip">ESP32</li><li class="chip">Relay</li><li class="chip">DHT11</li><li class="chip">LDR</li></ul>
+            <div class="case__actions">
+              <a class="btn btn--solid btn--sm" href="assignment-05.html">View project<span class="sr-only">: assignment 05</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="btn btn--line btn--sm" href="assignment-05.html#evidence"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg> Watch demo</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="overview" aria-labelledby="overview-title">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <div><p class="kicker">Overview</p><h2 id="overview-title">How the builds compare</h2></div>
+        <p>Each assignment extends the previous one: local HTTP becomes cloud MQTT, a manual command becomes an automated trigger, and an LED output becomes sensor telemetry and relay control.</p>
+      </div>
+      <div class="matrix-wrap reveal">
+        <table class="matrix">
+          <caption class="sr-only">Transport, cloud services, trigger, sensors and output used by each assignment</caption>
+          <thead><tr><th scope="col">Assignment</th><th scope="col">Transport</th><th scope="col">Cloud</th><th scope="col">Trigger</th><th scope="col">Sensors</th><th scope="col">Output</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><a href="assignment-01.html"><span>01</span>ESP32 Web Server</a></th><td data-label="Transport">HTTP on the local network (port 80)</td><td data-label="Cloud"><span class="none">None (LAN only)</span></td><td data-label="Trigger">Browser ON / OFF click</td><td data-label="Sensors"><span class="none">None</span></td><td data-label="Output">LED · GPIO 2</td></tr>
+            <tr><th scope="row"><a href="assignment-02.html"><span>02</span>Adafruit IO + MQTT</a></th><td data-label="Transport">MQTT publish / subscribe (port 1883)</td><td data-label="Cloud">Adafruit IO feed + dashboard</td><td data-label="Trigger">Dashboard control widget</td><td data-label="Sensors"><span class="none">None</span></td><td data-label="Output">LED · GPIO 2</td></tr>
+            <tr><th scope="row"><a href="assignment-03.html"><span>03</span>IFTTT Automation</a></th><td data-label="Transport">MQTT publish / subscribe (port 1883)</td><td data-label="Cloud">IFTTT Applet + Adafruit IO feed</td><td data-label="Trigger">Google Assistant voice trigger</td><td data-label="Sensors"><span class="none">None</span></td><td data-label="Output">LED · GPIO 2</td></tr>
+            <tr><th scope="row"><a href="assignment-04.html"><span>04</span>Firebase Monitoring</a></th><td data-label="Transport">Firebase Realtime Database</td><td data-label="Cloud">Firebase Auth, Realtime Database, Hosting</td><td data-label="Trigger">Periodic sensor upload</td><td data-label="Sensors">DHT11 · LDR</td><td data-label="Output">Authenticated web dashboard</td></tr>
+            <tr><th scope="row"><a href="assignment-05.html"><span>05</span>Home Automation</a></th><td data-label="Transport">Firebase Realtime Database</td><td data-label="Cloud">Firebase (extends Task 4)</td><td data-label="Trigger">MANUAL request or AUTO: LDR &gt; 3000</td><td data-label="Sensors">DHT11 · LDR</td><td data-label="Output">Relay · GPIO 26 → bulb</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="stack" aria-labelledby="stack-title">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <div><p class="kicker">Tools across the assignments</p><h2 id="stack-title">Tech stack</h2></div>
+        <p>Hardware, protocols, cloud services and software used in the five assignments, with the assignments that use each one.</p>
+      </div>
+      <div class="stack reveal">
+        <div class="stack__col"><h3>Hardware</h3><ul><li>ESP32 board <small>01–05</small></li><li>LED + resistor <small>01–03</small></li><li>DHT11 sensor <small>04–05</small></li><li>LDR <small>04–05</small></li><li>Relay module <small>05</small></li></ul></div>
+        <div class="stack__col"><h3>Protocols</h3><ul><li>Wi-Fi <small>01–05</small></li><li>HTTP <small>01</small></li><li>MQTT <small>02–03</small></li><li>Publish / subscribe <small>02–03</small></li><li>Realtime listener <small>04–05</small></li></ul></div>
+        <div class="stack__col"><h3>Cloud</h3><ul><li>Adafruit IO <small>02–03</small></li><li>IFTTT <small>03</small></li><li>Firebase Auth <small>04–05</small></li><li>Realtime Database <small>04–05</small></li><li>Firebase Hosting <small>04</small></li></ul></div>
+        <div class="stack__col"><h3>Software</h3><ul><li>Arduino IDE · C++ <small>01–05</small></li><li>Adafruit MQTT library <small>02–03</small></li><li>Firebase ESP Client <small>04</small></li><li>HTML · CSS · JS <small>01, 04–05</small></li><li>Chart.js <small>04–05</small></li></ul></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__about">
+        <a class="logo" href="#home"><span class="logo__chip" aria-hidden="true">RR</span><span class="logo__name">ROHIT RISHE</span></a>
+        <p>IoT · Embedded Systems · ESP32 · Cloud Integration. Five hands-on ESP32 assignments, from a local Wi-Fi web server to Firebase home automation.</p>
+      </div>
+      <nav aria-label="Assignments">
+        <h2>Assignments</h2>
+        <ul>
+          <li><a href="assignment-01.html"><span>01</span>ESP32 Web Server</a></li>
+          <li><a href="assignment-02.html"><span>02</span>Adafruit IO + MQTT</a></li>
+          <li><a href="assignment-03.html"><span>03</span>IFTTT Automation</a></li>
+          <li><a href="assignment-04.html"><span>04</span>Firebase Monitoring</a></li>
+          <li><a href="assignment-05.html"><span>05</span>Home Automation</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Site">
+        <h2>Site</h2>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#assignments">Assignments</a></li>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#stack">Tech stack</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot__base"><span>&copy; <span data-year>2026</span> Rohit Rishe. All rights reserved.</span><span>Built with HTML, CSS &amp; JavaScript.</span></div>
+  </div>
+</footer>
+<button class="totop" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg><svg class="totop__ring" viewBox="0 0 50 50" aria-hidden="true"><circle cx="25" cy="25" r="23"/></svg></button>
+<script src="js/main.js" defer></script>
+</body>
+</html>
